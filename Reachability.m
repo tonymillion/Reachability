@@ -117,7 +117,18 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 +(Reachability*)reachabilityForLocalWiFi
 {
-    return nil;
+    struct sockaddr_in localWifiAddress;
+    bzero(&localWifiAddress, sizeof(localWifiAddress));
+    localWifiAddress.sin_len            = sizeof(localWifiAddress);
+    localWifiAddress.sin_family         = AF_INET;
+    // IN_LINKLOCALNETNUM is defined in <netinet/in.h> as 169.254.0.0
+    localWifiAddress.sin_addr.s_addr    = htonl(IN_LINKLOCALNETNUM);
+    
+    Reachability* reach = [self reachabilityWithAddress:&localWifiAddress];
+    if(reach!= NULL)
+    {
+    }
+    return reach;
 }
 
 
@@ -137,13 +148,14 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 -(void)dealloc
 {
+    [self stopNotifier];
     if(self.reachabilityRef)
     {
         CFRelease(self.reachabilityRef);
         self.reachabilityRef = nil;
     }
 #ifdef DEBUG
-    NSLog(@"DEALLOC ZOMG");
+    NSLog(@"Reachability: dealloc");
 #endif
 }
 
@@ -204,6 +216,14 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 #pragma mark - reachability tests
 
+// this is for the case where you flick the airplane mode
+// you end up getting something like this:
+//Reachability: WR ct-----
+//Reachability: -- -------
+//Reachability: WR ct-----
+//Reachability: -- -------
+// we treat this as 4 UNREACHABLE triggers - really apple should do better than this
+
 #define testcase (kSCNetworkReachabilityFlagsConnectionRequired | kSCNetworkReachabilityFlagsTransientConnection)
 
 -(BOOL)isReachable
@@ -244,12 +264,14 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     
     if(SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) 
     {
-        if(!(flags & kSCNetworkReachabilityFlagsReachable))
-            return NO;
-        
-        if(flags & kSCNetworkReachabilityFlagsIsWWAN)
+        // check we're REACHABLE
+        if(flags & kSCNetworkReachabilityFlagsReachable)
         {
-            return YES;
+            // now, check we're on WWAN
+            if(flags & kSCNetworkReachabilityFlagsIsWWAN)
+            {
+                return YES;
+            }
         }
     }
 #endif
@@ -263,14 +285,18 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     
     if(SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) 
     {
-        if(!(flags & kSCNetworkReachabilityFlagsReachable))
-            return NO;
-#if	TARGET_OS_IPHONE
-        if(!(flags & kSCNetworkReachabilityFlagsIsWWAN))
+        // check we're reachable
+        if((flags & kSCNetworkReachabilityFlagsReachable))
         {
+#if	TARGET_OS_IPHONE
+            // check we're NOT on WWAN
+            if((flags & kSCNetworkReachabilityFlagsIsWWAN))
+            {
+                return NO;
+            }
+#endif
             return YES;
         }
-#endif
     }
     
     return NO;
@@ -281,18 +307,19 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 // WiFi may require a connection for VPN on Demand.
 -(BOOL)isConnectionRequired
 {
+    return [self connectionRequired];
+}
+
+-(BOOL)connectionRequired
+{
     SCNetworkReachabilityFlags flags;
 	
 	if(SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) 
     {
 		return (flags & kSCNetworkReachabilityFlagsConnectionRequired);
 	}
-
+    
     return NO;
-}
--(BOOL)connectionRequired
-{
-    return [self isConnectionRequired];
 }
 
 // Dynamic, on demand connection?
@@ -359,6 +386,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 	
 	if(temp == reachableOnWWAN)
 	{
+        // updated for the fact we have CDMA phones now!
 		return @"Cellular";
 	}
 	if (temp == ReachableViaWiFi) 
@@ -386,6 +414,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     {
         if(self.reachableBlock)
         {
+#ifdef DEBUG
+            NSLog(@"Reachability: blocks are not called on the main thread.\n Use dispatch_async(dispatch_get_main_queue(), ^{}] to update your UI!");
+#endif
             self.reachableBlock(self);
         }
     }
@@ -393,6 +424,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     {
         if(self.unreachableBlock)
         {
+#ifdef DEBUG
+            NSLog(@"Reachability: blocks are not called on the main thread.\n Use dispatch_async(dispatch_get_main_queue(), ^{}] to update your UI!");
+#endif
             self.unreachableBlock(self);
         }
     }
