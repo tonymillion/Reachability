@@ -60,7 +60,7 @@ typedef void (^NetworkUnreachable)(Reachability * reachability);
 
 @property (nonatomic, assign) BOOL reachableOnWWAN;
 
-@property (nonatomic, retain) id reachabilityObject;
+@property (nonatomic, strong) id reachabilityObject;
 
 +(Reachability*)reachabilityWithHostname:(NSString*)hostname;
 +(Reachability*)reachabilityForInternetConnection;

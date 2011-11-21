@@ -183,7 +183,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     }
     
     //create a serial queue
-    self.reachabilitySerialQueue = dispatch_queue_create("com.tonymillion.reachability", DISPATCH_QUEUE_SERIAL);        
+    self.reachabilitySerialQueue = dispatch_queue_create("com.tonymillion.reachability", NULL);        
     
     // set it as our reachability queue which will retain the queue
     if(SCNetworkReachabilitySetDispatchQueue(self.reachabilityRef, self.reachabilitySerialQueue))

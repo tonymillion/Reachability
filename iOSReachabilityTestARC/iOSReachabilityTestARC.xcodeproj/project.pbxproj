@@ -1,0 +1,294 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EAEB207C147A7ED2009545B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAEB207B147A7ED2009545B6 /* UIKit.framework */; };
+		EAEB207E147A7ED2009545B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAEB207D147A7ED2009545B6 /* Foundation.framework */; };
+		EAEB2080147A7ED2009545B6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAEB207F147A7ED2009545B6 /* CoreGraphics.framework */; };
+		EAEB2086147A7ED2009545B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAEB2084147A7ED2009545B6 /* InfoPlist.strings */; };
+		EAEB2088147A7ED2009545B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEB2087147A7ED2009545B6 /* main.m */; };
+		EAEB208C147A7ED2009545B6 /* TMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEB208B147A7ED2009545B6 /* TMAppDelegate.m */; };
+		EAEB208F147A7ED2009545B6 /* TMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEB208E147A7ED2009545B6 /* TMViewController.m */; };
+		EAEB2092147A7ED2009545B6 /* TMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAEB2090147A7ED2009545B6 /* TMViewController.xib */; };
+		EAEB209A147A7EE6009545B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEB2099147A7EE6009545B6 /* Reachability.m */; };
+		EAEB209C147A7F00009545B6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAEB209B147A7F00009545B6 /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EAEB2077147A7ED2009545B6 /* iOSReachabilityTestARC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSReachabilityTestARC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAEB207B147A7ED2009545B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EAEB207D147A7ED2009545B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EAEB207F147A7ED2009545B6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EAEB2083147A7ED2009545B6 /* iOSReachabilityTestARC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOSReachabilityTestARC-Info.plist"; sourceTree = "<group>"; };
+		EAEB2085147A7ED2009545B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EAEB2087147A7ED2009545B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EAEB2089147A7ED2009545B6 /* iOSReachabilityTestARC-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOSReachabilityTestARC-Prefix.pch"; sourceTree = "<group>"; };
+		EAEB208A147A7ED2009545B6 /* TMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMAppDelegate.h; sourceTree = "<group>"; };
+		EAEB208B147A7ED2009545B6 /* TMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMAppDelegate.m; sourceTree = "<group>"; };
+		EAEB208D147A7ED2009545B6 /* TMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMViewController.h; sourceTree = "<group>"; };
+		EAEB208E147A7ED2009545B6 /* TMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMViewController.m; sourceTree = "<group>"; };
+		EAEB2091147A7ED2009545B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TMViewController.xib; sourceTree = "<group>"; };
+		EAEB2098147A7EE6009545B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../../Reachability.h; sourceTree = "<group>"; };
+		EAEB2099147A7EE6009545B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../../Reachability.m; sourceTree = "<group>"; };
+		EAEB209B147A7F00009545B6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EAEB2074147A7ED2009545B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAEB209C147A7F00009545B6 /* SystemConfiguration.framework in Frameworks */,
+				EAEB207C147A7ED2009545B6 /* UIKit.framework in Frameworks */,
+				EAEB207E147A7ED2009545B6 /* Foundation.framework in Frameworks */,
+				EAEB2080147A7ED2009545B6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EAEB206C147A7ED2009545B6 = {
+			isa = PBXGroup;
+			children = (
+				EAEB2081147A7ED2009545B6 /* iOSReachabilityTestARC */,
+				EAEB207A147A7ED2009545B6 /* Frameworks */,
+				EAEB2078147A7ED2009545B6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EAEB2078147A7ED2009545B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAEB2077147A7ED2009545B6 /* iOSReachabilityTestARC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAEB207A147A7ED2009545B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAEB209B147A7F00009545B6 /* SystemConfiguration.framework */,
+				EAEB207B147A7ED2009545B6 /* UIKit.framework */,
+				EAEB207D147A7ED2009545B6 /* Foundation.framework */,
+				EAEB207F147A7ED2009545B6 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAEB2081147A7ED2009545B6 /* iOSReachabilityTestARC */ = {
+			isa = PBXGroup;
+			children = (
+				EAEB2098147A7EE6009545B6 /* Reachability.h */,
+				EAEB2099147A7EE6009545B6 /* Reachability.m */,
+				EAEB208A147A7ED2009545B6 /* TMAppDelegate.h */,
+				EAEB208B147A7ED2009545B6 /* TMAppDelegate.m */,
+				EAEB208D147A7ED2009545B6 /* TMViewController.h */,
+				EAEB208E147A7ED2009545B6 /* TMViewController.m */,
+				EAEB2090147A7ED2009545B6 /* TMViewController.xib */,
+				EAEB2082147A7ED2009545B6 /* Supporting Files */,
+			);
+			path = iOSReachabilityTestARC;
+			sourceTree = "<group>";
+		};
+		EAEB2082147A7ED2009545B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EAEB2083147A7ED2009545B6 /* iOSReachabilityTestARC-Info.plist */,
+				EAEB2084147A7ED2009545B6 /* InfoPlist.strings */,
+				EAEB2087147A7ED2009545B6 /* main.m */,
+				EAEB2089147A7ED2009545B6 /* iOSReachabilityTestARC-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EAEB2076147A7ED2009545B6 /* iOSReachabilityTestARC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAEB2095147A7ED2009545B6 /* Build configuration list for PBXNativeTarget "iOSReachabilityTestARC" */;
+			buildPhases = (
+				EAEB2073147A7ED2009545B6 /* Sources */,
+				EAEB2074147A7ED2009545B6 /* Frameworks */,
+				EAEB2075147A7ED2009545B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOSReachabilityTestARC;
+			productName = iOSReachabilityTestARC;
+			productReference = EAEB2077147A7ED2009545B6 /* iOSReachabilityTestARC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EAEB206E147A7ED2009545B6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = EAEB2071147A7ED2009545B6 /* Build configuration list for PBXProject "iOSReachabilityTestARC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EAEB206C147A7ED2009545B6;
+			productRefGroup = EAEB2078147A7ED2009545B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EAEB2076147A7ED2009545B6 /* iOSReachabilityTestARC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAEB2075147A7ED2009545B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAEB2086147A7ED2009545B6 /* InfoPlist.strings in Resources */,
+				EAEB2092147A7ED2009545B6 /* TMViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EAEB2073147A7ED2009545B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAEB2088147A7ED2009545B6 /* main.m in Sources */,
+				EAEB208C147A7ED2009545B6 /* TMAppDelegate.m in Sources */,
+				EAEB208F147A7ED2009545B6 /* TMViewController.m in Sources */,
+				EAEB209A147A7EE6009545B6 /* Reachability.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EAEB2084147A7ED2009545B6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAEB2085147A7ED2009545B6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EAEB2090147A7ED2009545B6 /* TMViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAEB2091147A7ED2009545B6 /* en */,
+			);
+			name = TMViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EAEB2093147A7ED2009545B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EAEB2094147A7ED2009545B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EAEB2096147A7ED2009545B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOSReachabilityTestARC/iOSReachabilityTestARC-Prefix.pch";
+				INFOPLIST_FILE = "iOSReachabilityTestARC/iOSReachabilityTestARC-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EAEB2097147A7ED2009545B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOSReachabilityTestARC/iOSReachabilityTestARC-Prefix.pch";
+				INFOPLIST_FILE = "iOSReachabilityTestARC/iOSReachabilityTestARC-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EAEB2071147A7ED2009545B6 /* Build configuration list for PBXProject "iOSReachabilityTestARC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAEB2093147A7ED2009545B6 /* Debug */,
+				EAEB2094147A7ED2009545B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAEB2095147A7ED2009545B6 /* Build configuration list for PBXNativeTarget "iOSReachabilityTestARC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAEB2096147A7ED2009545B6 /* Debug */,
+				EAEB2097147A7ED2009545B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EAEB206E147A7ED2009545B6 /* Project object */;
+}

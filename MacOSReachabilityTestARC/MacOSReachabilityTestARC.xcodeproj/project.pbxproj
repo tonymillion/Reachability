@@ -1,0 +1,310 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EAEB204B147A7DFE009545B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAEB204A147A7DFE009545B6 /* Cocoa.framework */; };
+		EAEB2055147A7DFE009545B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAEB2053147A7DFE009545B6 /* InfoPlist.strings */; };
+		EAEB2057147A7DFE009545B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEB2056147A7DFE009545B6 /* main.m */; };
+		EAEB205B147A7DFE009545B6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = EAEB2059147A7DFE009545B6 /* Credits.rtf */; };
+		EAEB205E147A7DFE009545B6 /* TMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEB205D147A7DFE009545B6 /* TMAppDelegate.m */; };
+		EAEB2061147A7DFF009545B6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAEB205F147A7DFF009545B6 /* MainMenu.xib */; };
+		EAEB2069147A7E16009545B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EAEB2068147A7E16009545B6 /* Reachability.m */; };
+		EAEB206B147A7E2D009545B6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAEB206A147A7E2D009545B6 /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EAEB2046147A7DFE009545B6 /* MacOSReachabilityTestARC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacOSReachabilityTestARC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAEB204A147A7DFE009545B6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		EAEB204D147A7DFE009545B6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		EAEB204E147A7DFE009545B6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		EAEB204F147A7DFE009545B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EAEB2052147A7DFE009545B6 /* MacOSReachabilityTestARC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacOSReachabilityTestARC-Info.plist"; sourceTree = "<group>"; };
+		EAEB2054147A7DFE009545B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EAEB2056147A7DFE009545B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EAEB2058147A7DFE009545B6 /* MacOSReachabilityTestARC-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacOSReachabilityTestARC-Prefix.pch"; sourceTree = "<group>"; };
+		EAEB205A147A7DFE009545B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		EAEB205C147A7DFE009545B6 /* TMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMAppDelegate.h; sourceTree = "<group>"; };
+		EAEB205D147A7DFE009545B6 /* TMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMAppDelegate.m; sourceTree = "<group>"; };
+		EAEB2060147A7DFF009545B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		EAEB2067147A7E16009545B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../../Reachability.h; sourceTree = "<group>"; };
+		EAEB2068147A7E16009545B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../../Reachability.m; sourceTree = "<group>"; };
+		EAEB206A147A7E2D009545B6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EAEB2043147A7DFE009545B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAEB206B147A7E2D009545B6 /* SystemConfiguration.framework in Frameworks */,
+				EAEB204B147A7DFE009545B6 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EAEB203B147A7DFE009545B6 = {
+			isa = PBXGroup;
+			children = (
+				EAEB2050147A7DFE009545B6 /* MacOSReachabilityTestARC */,
+				EAEB2049147A7DFE009545B6 /* Frameworks */,
+				EAEB2047147A7DFE009545B6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EAEB2047147A7DFE009545B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAEB2046147A7DFE009545B6 /* MacOSReachabilityTestARC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAEB2049147A7DFE009545B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAEB206A147A7E2D009545B6 /* SystemConfiguration.framework */,
+				EAEB204A147A7DFE009545B6 /* Cocoa.framework */,
+				EAEB204C147A7DFE009545B6 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAEB204C147A7DFE009545B6 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAEB204D147A7DFE009545B6 /* AppKit.framework */,
+				EAEB204E147A7DFE009545B6 /* CoreData.framework */,
+				EAEB204F147A7DFE009545B6 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		EAEB2050147A7DFE009545B6 /* MacOSReachabilityTestARC */ = {
+			isa = PBXGroup;
+			children = (
+				EAEB2067147A7E16009545B6 /* Reachability.h */,
+				EAEB2068147A7E16009545B6 /* Reachability.m */,
+				EAEB205C147A7DFE009545B6 /* TMAppDelegate.h */,
+				EAEB205D147A7DFE009545B6 /* TMAppDelegate.m */,
+				EAEB205F147A7DFF009545B6 /* MainMenu.xib */,
+				EAEB2051147A7DFE009545B6 /* Supporting Files */,
+			);
+			path = MacOSReachabilityTestARC;
+			sourceTree = "<group>";
+		};
+		EAEB2051147A7DFE009545B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EAEB2052147A7DFE009545B6 /* MacOSReachabilityTestARC-Info.plist */,
+				EAEB2053147A7DFE009545B6 /* InfoPlist.strings */,
+				EAEB2056147A7DFE009545B6 /* main.m */,
+				EAEB2058147A7DFE009545B6 /* MacOSReachabilityTestARC-Prefix.pch */,
+				EAEB2059147A7DFE009545B6 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EAEB2045147A7DFE009545B6 /* MacOSReachabilityTestARC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAEB2064147A7DFF009545B6 /* Build configuration list for PBXNativeTarget "MacOSReachabilityTestARC" */;
+			buildPhases = (
+				EAEB2042147A7DFE009545B6 /* Sources */,
+				EAEB2043147A7DFE009545B6 /* Frameworks */,
+				EAEB2044147A7DFE009545B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacOSReachabilityTestARC;
+			productName = MacOSReachabilityTestARC;
+			productReference = EAEB2046147A7DFE009545B6 /* MacOSReachabilityTestARC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EAEB203D147A7DFE009545B6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = EAEB2040147A7DFE009545B6 /* Build configuration list for PBXProject "MacOSReachabilityTestARC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EAEB203B147A7DFE009545B6;
+			productRefGroup = EAEB2047147A7DFE009545B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EAEB2045147A7DFE009545B6 /* MacOSReachabilityTestARC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAEB2044147A7DFE009545B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAEB2055147A7DFE009545B6 /* InfoPlist.strings in Resources */,
+				EAEB205B147A7DFE009545B6 /* Credits.rtf in Resources */,
+				EAEB2061147A7DFF009545B6 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EAEB2042147A7DFE009545B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAEB2057147A7DFE009545B6 /* main.m in Sources */,
+				EAEB205E147A7DFE009545B6 /* TMAppDelegate.m in Sources */,
+				EAEB2069147A7E16009545B6 /* Reachability.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EAEB2053147A7DFE009545B6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAEB2054147A7DFE009545B6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EAEB2059147A7DFE009545B6 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAEB205A147A7DFE009545B6 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		EAEB205F147A7DFF009545B6 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAEB2060147A7DFF009545B6 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EAEB2062147A7DFF009545B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		EAEB2063147A7DFF009545B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		EAEB2065147A7DFF009545B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MacOSReachabilityTestARC/MacOSReachabilityTestARC-Prefix.pch";
+				INFOPLIST_FILE = "MacOSReachabilityTestARC/MacOSReachabilityTestARC-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EAEB2066147A7DFF009545B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MacOSReachabilityTestARC/MacOSReachabilityTestARC-Prefix.pch";
+				INFOPLIST_FILE = "MacOSReachabilityTestARC/MacOSReachabilityTestARC-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EAEB2040147A7DFE009545B6 /* Build configuration list for PBXProject "MacOSReachabilityTestARC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAEB2062147A7DFF009545B6 /* Debug */,
+				EAEB2063147A7DFF009545B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAEB2064147A7DFF009545B6 /* Build configuration list for PBXNativeTarget "MacOSReachabilityTestARC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAEB2065147A7DFF009545B6 /* Debug */,
+				EAEB2066147A7DFF009545B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EAEB203D147A7DFE009545B6 /* Project object */;
+}
