@@ -387,14 +387,14 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 	if(temp == reachableOnWWAN)
 	{
         // updated for the fact we have CDMA phones now!
-		return @"Cellular";
+		return NSLocalizedString(@"Cellular", @"");
 	}
 	if (temp == ReachableViaWiFi) 
 	{
-		return @"WiFi";
+		return NSLocalizedString(@"WiFi", @"");
 	}
 	
-	return @"No Connection";
+	return NSLocalizedString(@"No Connection", @"");
 }
 
 -(NSString*)currentReachabilityFlags
