@@ -124,11 +124,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     // IN_LINKLOCALNETNUM is defined in <netinet/in.h> as 169.254.0.0
     localWifiAddress.sin_addr.s_addr    = htonl(IN_LINKLOCALNETNUM);
     
-    Reachability* reach = [self reachabilityWithAddress:&localWifiAddress];
-    if(reach!= NULL)
-    {
-    }
-    return reach;
+    return [self reachabilityWithAddress:&localWifiAddress];
 }
 
 
@@ -178,7 +174,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     
     if (!SCNetworkReachabilitySetCallback(self.reachabilityRef, TMReachabilityCallback, &context)) 
     {
-        printf("SCNetworkReachabilitySetCallback() failed: %s\n", SCErrorString(SCError()));
+#ifdef DEBUG
+        NSLog(@"SCNetworkReachabilitySetCallback() failed: %s\n", SCErrorString(SCError()));
+#endif
         return NO;
     }
     
