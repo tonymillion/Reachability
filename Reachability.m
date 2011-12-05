@@ -35,6 +35,8 @@ NSString *const kReachabilityChangedNotification = @"kReachabilityChangedNotific
 -(void)reachabilityChanged:(SCNetworkReachabilityFlags)flags;
 -(BOOL)setReachabilityTarget:(NSString*)hostname;
 
+-(BOOL)isReachableWithFlags:(SCNetworkReachabilityFlags)flags;
+
 @end
 
 static NSString *reachabilityFlags(SCNetworkReachabilityFlags flags) 
@@ -224,13 +226,8 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 #define testcase (kSCNetworkReachabilityFlagsConnectionRequired | kSCNetworkReachabilityFlagsTransientConnection)
 
--(BOOL)isReachable
+-(BOOL)isReachableWithFlags:(SCNetworkReachabilityFlags)flags
 {
-    SCNetworkReachabilityFlags flags;  
-    
-    if(!SCNetworkReachabilityGetFlags(self.reachabilityRef, &flags))
-        return NO;
-    
     BOOL connectionUP = YES;
     
     if(!(flags & kSCNetworkReachabilityFlagsReachable))
@@ -252,6 +249,16 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 #endif
     
     return connectionUP;
+}
+
+-(BOOL)isReachable
+{
+    SCNetworkReachabilityFlags flags;  
+    
+    if(!SCNetworkReachabilityGetFlags(self.reachabilityRef, &flags))
+        return NO;
+    
+    return [self isReachableWithFlags:flags];
 }
 
 -(BOOL)isReachableViaWWAN 
@@ -408,7 +415,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     NSLog(@"Reachability: %@", reachabilityFlags(flags));
 #endif
     
-    if([self isReachable])
+    if([self isReachableWithFlags:flags])
     {
         if(self.reachableBlock)
         {
