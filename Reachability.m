@@ -90,7 +90,14 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     SCNetworkReachabilityRef ref = SCNetworkReachabilityCreateWithName(NULL, [hostname UTF8String]);
     if (ref) 
     {
-        return [[self alloc] initWithReachabilityRef:ref];
+        id reachability = [[self alloc] initWithReachabilityRef:ref];
+
+#if __has_feature(objc_arc)
+        return reachability;
+#else
+        return [reachability autorelease];
+#endif
+
     }
     
     return nil;
@@ -101,7 +108,13 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     SCNetworkReachabilityRef ref = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr*)hostAddress);
     if (ref) 
     {
-        return [[self alloc] initWithReachabilityRef:ref];
+        id reachability = [[self alloc] initWithReachabilityRef:ref];
+        
+#if __has_feature(objc_arc)
+        return reachability;
+#else
+        return [reachability autorelease];
+#endif
     }
     
     return nil;
