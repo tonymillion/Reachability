@@ -181,7 +181,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 // Notifier 
 // NOTE: this uses GCD to trigger the blocks - they *WILL NOT* be called on THE MAIN THREAD
 // - In other words DO NOT DO ANY UI UPDATES IN THE BLOCKS.
-//   INSTEAD USE dispatch_async(dispatch_get_main_thread(), ^{UISTUFF}) (or dispatch_sync if you want)
+//   INSTEAD USE dispatch_async(dispatch_get_main_queue(), ^{UISTUFF}) (or dispatch_sync if you want)
 
 -(BOOL)startNotifier
 {
