@@ -33,7 +33,15 @@ NSString *const kReachabilityChangedNotification = @"kReachabilityChangedNotific
 @interface Reachability ()
 
 @property (nonatomic, assign) SCNetworkReachabilityRef  reachabilityRef;
+
+
+#if NEEDS_DISPATCH_RETAIN_RELEASE
 @property (nonatomic, assign) dispatch_queue_t          reachabilitySerialQueue;
+#else
+@property (nonatomic, strong) dispatch_queue_t          reachabilitySerialQueue;
+#endif
+
+
 @property (nonatomic, strong) id reachabilityObject;
 
 -(void)reachabilityChanged:(SCNetworkReachabilityFlags)flags;
@@ -168,9 +176,6 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
         CFRelease(self.reachabilityRef);
         self.reachabilityRef = nil;
     }
-#ifdef DEBUG
-    NSLog(@"Reachability: dealloc");
-#endif
     
 #if !(__has_feature(objc_arc))
     [super dealloc];
@@ -216,7 +221,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
         //clear out the dispatch queue
         if(self.reachabilitySerialQueue)
         {
+#ifdef NEEDS_DISPATCH_RETAIN_RELEASE
             dispatch_release(self.reachabilitySerialQueue);
+#endif
             self.reachabilitySerialQueue = nil;
         }
         
@@ -240,7 +247,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
         // then clear out the dispatch queue
         if(self.reachabilitySerialQueue)
         {
+#ifdef NEEDS_DISPATCH_RETAIN_RELEASE
             dispatch_release(self.reachabilitySerialQueue);
+#endif
             self.reachabilitySerialQueue = nil;
         }
         
@@ -262,7 +271,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     
     if(self.reachabilitySerialQueue)
     {
+#ifdef NEEDS_DISPATCH_RETAIN_RELEASE
         dispatch_release(self.reachabilitySerialQueue);
+#endif
         self.reachabilitySerialQueue = nil;
     }
     
@@ -466,17 +477,10 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 -(void)reachabilityChanged:(SCNetworkReachabilityFlags)flags
 {
-#ifdef DEBUG
-    NSLog(@"Reachability: %@", reachabilityFlags(flags));
-#endif
-    
     if([self isReachableWithFlags:flags])
     {
         if(self.reachableBlock)
         {
-#ifdef DEBUG
-            NSLog(@"Reachability: blocks are not called on the main thread.\n Use dispatch_async(dispatch_get_main_queue(), ^{}); to update your UI!");
-#endif
             self.reachableBlock(self);
         }
     }
@@ -484,9 +488,6 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     {
         if(self.unreachableBlock)
         {
-#ifdef DEBUG
-            NSLog(@"Reachability: blocks are not called on the main thread.\n Use dispatch_async(dispatch_get_main_queue(), ^{}); to update your UI!");
-#endif
             self.unreachableBlock(self);
         }
     }
