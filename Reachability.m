@@ -130,26 +130,38 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     return nil;
 }
 
-+(Reachability *)reachabilityForInternetConnection 
-{   
-    struct sockaddr_in zeroAddress;
-    bzero(&zeroAddress, sizeof(zeroAddress));
-    zeroAddress.sin_len = sizeof(zeroAddress);
-    zeroAddress.sin_family = AF_INET;
+static dispatch_once_t onceInternetConnectionToken;
+static Reachability * _InternetConnectionReachability = nil;
+
++(Reachability *)reachabilityForInternetConnection
+{
+    dispatch_once(&onceInternetConnectionToken, ^{
+        struct sockaddr_in zeroAddress;
+        bzero(&zeroAddress, sizeof(zeroAddress));
+        zeroAddress.sin_len = sizeof(zeroAddress);
+        zeroAddress.sin_family = AF_INET;
+        _InternetConnectionReachability = [self reachabilityWithAddress:&zeroAddress];
+    });
     
-    return [self reachabilityWithAddress:&zeroAddress];
+    return _InternetConnectionReachability;
 }
+
+static dispatch_once_t onceLocalWiFiToken;
+static Reachability * _LocalWiFiReachability = nil;
 
 +(Reachability*)reachabilityForLocalWiFi
 {
-    struct sockaddr_in localWifiAddress;
-    bzero(&localWifiAddress, sizeof(localWifiAddress));
-    localWifiAddress.sin_len            = sizeof(localWifiAddress);
-    localWifiAddress.sin_family         = AF_INET;
-    // IN_LINKLOCALNETNUM is defined in <netinet/in.h> as 169.254.0.0
-    localWifiAddress.sin_addr.s_addr    = htonl(IN_LINKLOCALNETNUM);
+    dispatch_once(&onceLocalWiFiToken, ^{
+        struct sockaddr_in localWifiAddress;
+        bzero(&localWifiAddress, sizeof(localWifiAddress));
+        localWifiAddress.sin_len            = sizeof(localWifiAddress);
+        localWifiAddress.sin_family         = AF_INET;
+        // IN_LINKLOCALNETNUM is defined in <netinet/in.h> as 169.254.0.0
+        localWifiAddress.sin_addr.s_addr    = htonl(IN_LINKLOCALNETNUM);
+        _LocalWiFiReachability = [self reachabilityWithAddress:&localWifiAddress];
+    });
     
-    return [self reachabilityWithAddress:&localWifiAddress];
+    return _LocalWiFiReachability;
 }
 
 
