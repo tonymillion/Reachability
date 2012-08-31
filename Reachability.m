@@ -176,6 +176,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
         CFRelease(self.reachabilityRef);
         self.reachabilityRef = nil;
     }
+
+	self.reachableBlock		= nil;
+	self.unreachableBlock	= nil;
     
 #if !(__has_feature(objc_arc))
     [super dealloc];
