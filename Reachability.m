@@ -71,7 +71,11 @@ static NSString *reachabilityFlags(SCNetworkReachabilityFlags flags)
 static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void* info) 
 {
 #pragma unused (target)
+#if __has_feature(obj_arc)
     Reachability *reachability = ((__bridge Reachability*)info);
+#else
+    Reachability *reachability = ((Reachability*)info);
+#endif
     
     // we probably dont need an autoreleasepool here as GCD docs state each queue has its own autorelease pool
     // but what the heck eh?
@@ -212,8 +216,11 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
         return NO;
     }
     
-    
+#if __has_feature(obj_arc)
     context.info = (__bridge void *)self;
+#else
+    context.info = (void *)self;
+#endif
     
     if (!SCNetworkReachabilitySetCallback(self.reachabilityRef, TMReachabilityCallback, &context)) 
     {
