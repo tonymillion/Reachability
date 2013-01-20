@@ -509,4 +509,13 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     });
 }
 
+#pragma mark - Debug Description
+
+- (NSString *) description;
+{
+    NSString *description = [NSString stringWithFormat:@"<%@: %#x; isReachable: %s; current reachability flags: %@>",
+                             NSStringFromClass([self class]), (unsigned int) self, (self.isReachable ? "YES" : "NO" ), self.currentReachabilityFlags];
+    return description;
+}
+
 @end
