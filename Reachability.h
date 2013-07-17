@@ -36,7 +36,7 @@
 #import <netdb.h>
 
 /**
- * Does ARC support support GCD objects?
+ * Does ARC support GCD objects?
  * It does if the minimum deployment target is iOS 6+ or Mac OS X 8+
  * 
  * @see http://opensource.apple.com/source/libdispatch/libdispatch-228.18/os/object.h
