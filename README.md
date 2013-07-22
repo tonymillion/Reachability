@@ -1,26 +1,31 @@
 # Reachability
 
-This is a drop-in replacement for Apples Reachability class. It is ARC compatible, uses the new GCD methods to notify of network interface changes.
+This is a drop-in replacement for Apple's `Reachability` class. It is ARC-compatible, and it uses the new GCD methods to notify of network interface changes.
 
-In addition to the standard NSNotification it supports the use of Blocks for when the network becomes reachable and unreachable.
+In addition to the standard `NSNotification`, it supports the use of blocks for when the network becomes reachable and unreachable.
 
-Finally you can specify wether or not a WWAN connection is considered "reachable".
+Finally, you can specify whether a WWAN connection is considered "reachable".
 
-#### Requirements
+## Requirements
 
-Once you have added the ```h/.m``` files to your project simply go to the ```Project->TARGETS->Build Phases->Link Binary With Libraries``` then press the plus in the lower left of the list. Add ```SystemConfiguration.framework```. Boom, you're done.
+Once you have added the `.h/m` files to your project, simply:
 
-#### Tell the world
+* Go to the `Project->TARGETS->Build Phases->Link Binary With Libraries`.
+* Press the plus in the lower left of the list.
+* Add `SystemConfiguration.framework`.
 
-Head over to [Projects using Reachability](https://github.com/tonymillion/Reachability/wiki/Projects-using-Reachability) and add your project for "Maximum Wins!"
+Boom, you're done.
 
-## A Simple example
-This sample uses Blocks to tell you when the interface state has changed. The blocks will be called on a BACKGROUND THREAD so you need to dispatch UI updates onto the main thread.
+## Examples
 
-	// allocate a reachability object
+### Block Example
+
+This sample uses blocks to notify when the interface state has changed. The blocks will be called on a **BACKGROUND THREAD**, so you need to dispatch UI updates onto the main thread.
+
+	// Allocate a reachability object
 	Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
 
-	// set the blocks 
+	// Set the blocks 
 	reach.reachableBlock = ^(Reachability*reach)
 	{
 		NSLog(@"REACHABLE!");
@@ -31,21 +36,22 @@ This sample uses Blocks to tell you when the interface state has changed. The bl
 		NSLog(@"UNREACHABLE!");
 	};
 
-	// start the notifier which will cause the reachability object to retain itself!
+	// Start the notifier, which will cause the reachability object to retain itself!
 	[reach startNotifier];
 
-## Another simple example
-This sample will use NSNotifications to tell you when the interface has changed, they will be delivered on the MAIN THREAD so you *can* do UI updates from within the function.
+### `NSNotification` Example
 
-In addition it asks the Reachability object to consider the WWAN (3G/EDGE/CDMA) as a non-reachable connection (you might use this if you are writing a video streaming app, for example, to save the users data plan).
+This sample will use `NSNotification`s to notify when the interface has changed. They will be delivered on the **MAIN THREAD**, so you *can* do UI updates from within the function.
 
-	// allocate a reachability object
+In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDMA) as a non-reachable connection (you might use this if you are writing a video streaming app, for example, to save the user's data plan).
+
+	// Allocate a reachability object
 	Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
 
-	// tell the reachability that we DONT want to be reachable on 3G/EDGE/CDMA
+	// Tell the reachability that we DON'T want to be reachable on 3G/EDGE/CDMA
 	reach.reachableOnWWAN = NO;
 	
-	// here we set up a NSNotification observer. The Reachability that caused the notification
+	// Here we set up a NSNotification observer. The Reachability that caused the notification
 	// is passed in the object parameter
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(reachabilityChanged:) 
@@ -53,4 +59,7 @@ In addition it asks the Reachability object to consider the WWAN (3G/EDGE/CDMA) 
 											   object:nil];
 											
 	[reach startNotifier]
-	
+
+## Tell the world
+
+Head over to [Projects using Reachability](https://github.com/tonymillion/Reachability/wiki/Projects-using-Reachability) and add your project for "Maximum Wins!".
