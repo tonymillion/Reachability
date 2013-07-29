@@ -58,7 +58,7 @@ In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDM
 												 name:kReachabilityChangedNotification 
 											   object:nil];
 											
-	[reach startNotifier]
+	[reach startNotifier];
 
 ## Tell the world
 
