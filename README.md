@@ -56,7 +56,7 @@ In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDM
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(reachabilityChanged:) 
 												 name:kReachabilityChangedNotification 
-											   object:nil];
+											   object:reach];
 											
 	[reach startNotifier];
 
