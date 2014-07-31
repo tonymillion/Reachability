@@ -310,6 +310,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 -(BOOL)isReachableWithFlags:(SCNetworkReachabilityFlags)flags
 {
+    if (flags <= 0)
+        return YES;
+    
     BOOL connectionUP = YES;
     
     if(!(flags & kSCNetworkReachabilityFlagsReachable))
