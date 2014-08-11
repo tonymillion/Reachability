@@ -335,9 +335,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 -(BOOL)isReachable
 {
-    SCNetworkReachabilityFlags flags;  
+    SCNetworkReachabilityFlags flags = self.reachabilityFlags;
     
-    if(!SCNetworkReachabilityGetFlags(self.reachabilityRef, &flags))
+    if(!flags)
         return NO;
     
     return [self isReachableWithFlags:flags];
@@ -347,9 +347,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 {
 #if	TARGET_OS_IPHONE
 
-    SCNetworkReachabilityFlags flags = 0;
+    SCNetworkReachabilityFlags flags = self.reachabilityFlags;
     
-    if(SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) 
+    if(flags) 
     {
         // Check we're REACHABLE
         if(flags & kSCNetworkReachabilityFlagsReachable)
@@ -368,9 +368,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 -(BOOL)isReachableViaWiFi 
 {
-    SCNetworkReachabilityFlags flags = 0;
+    SCNetworkReachabilityFlags flags = self.reachabilityFlags;
     
-    if(SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) 
+    if(flags)
     {
         // Check we're reachable
         if((flags & kSCNetworkReachabilityFlagsReachable))
@@ -399,9 +399,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 -(BOOL)connectionRequired
 {
-    SCNetworkReachabilityFlags flags;
+    SCNetworkReachabilityFlags flags = self.reachabilityFlags;
 	
-	if(SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) 
+	if(flags) 
     {
 		return (flags & kSCNetworkReachabilityFlagsConnectionRequired);
 	}
@@ -412,9 +412,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 // Dynamic, on demand connection?
 -(BOOL)isConnectionOnDemand
 {
-	SCNetworkReachabilityFlags flags;
+ 	SCNetworkReachabilityFlags flags = self.reachabilityFlags;
 	
-	if (SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) 
+	if (flags)
     {
 		return ((flags & kSCNetworkReachabilityFlagsConnectionRequired) &&
 				(flags & (kSCNetworkReachabilityFlagsConnectionOnTraffic | kSCNetworkReachabilityFlagsConnectionOnDemand)));
@@ -426,9 +426,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 // Is user intervention required?
 -(BOOL)isInterventionRequired
 {
-    SCNetworkReachabilityFlags flags;
+    SCNetworkReachabilityFlags flags = self.reachabilityFlags;
 	
-	if (SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) 
+	if (flags) 
     {
 		return ((flags & kSCNetworkReachabilityFlagsConnectionRequired) &&
 				(flags & kSCNetworkReachabilityFlagsInterventionRequired));
