@@ -18,4 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel * localWifinotificationLabel;
 
 
+@property (weak, nonatomic) IBOutlet UILabel * internetConnectionblockLabel;
+@property (weak, nonatomic) IBOutlet UILabel * internetConnectionnotificationLabel;
+
+
 @end

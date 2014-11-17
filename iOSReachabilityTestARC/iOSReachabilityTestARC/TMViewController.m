@@ -16,6 +16,7 @@
 
 @property(strong) Reachability * googleReach;
 @property(strong) Reachability * localWiFiReach;
+@property(strong) Reachability * internetConnectionReach;
 
 @end
 
@@ -41,6 +42,8 @@
     self.notificationLabel.text = @"Not Fired Yet";
     self.localWifiblockLabel.text = @"Not Fired Yet";
     self.localWifinotificationLabel.text = @"Not Fired Yet";
+    self.internetConnectionblockLabel.text = @"Not Fired Yet";
+    self.internetConnectionnotificationLabel.text = @"Not Fired Yet";
 
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -68,6 +71,7 @@
         // this uses NSOperationQueue mainQueue
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             weakself.blockLabel.text = temp;
+            weakself.blockLabel.textColor = [UIColor blackColor];
         }];
     };
     
@@ -81,6 +85,7 @@
         // this one uses dispatch_async they do the same thing (as above)
         dispatch_async(dispatch_get_main_queue(), ^{
             weakself.blockLabel.text = temp;
+            weakself.blockLabel.textColor = [UIColor redColor];
         });
     };
     
@@ -105,6 +110,7 @@
 
         dispatch_async(dispatch_get_main_queue(), ^{
             weakself.localWifiblockLabel.text = temp;
+            weakself.localWifiblockLabel.textColor = [UIColor blackColor];
         });
     };
 
@@ -115,10 +121,45 @@
         NSLog(@"%@", temp);
         dispatch_async(dispatch_get_main_queue(), ^{
             weakself.localWifiblockLabel.text = temp;
+            weakself.localWifiblockLabel.textColor = [UIColor redColor];
         });
     };
 
     [self.localWiFiReach startNotifier];
+
+
+
+    //////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////
+    //
+    // create a Reachability object for the internet
+
+    self.internetConnectionReach = [Reachability reachabilityForInternetConnection];
+
+    self.internetConnectionReach.reachableBlock = ^(Reachability * reachability)
+    {
+        NSString * temp = [NSString stringWithFormat:@" InternetConnection Says Reachable(%@)", reachability.currentReachabilityString];
+        NSLog(@"%@", temp);
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakself.internetConnectionblockLabel.text = temp;
+            weakself.internetConnectionblockLabel.textColor = [UIColor blackColor];
+        });
+    };
+
+    self.internetConnectionReach.unreachableBlock = ^(Reachability * reachability)
+    {
+        NSString * temp = [NSString stringWithFormat:@"InternetConnection Block Says Unreachable(%@)", reachability.currentReachabilityString];
+
+        NSLog(@"%@", temp);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakself.internetConnectionblockLabel.text = temp;
+            weakself.internetConnectionblockLabel.textColor = [UIColor redColor];
+        });
+    };
+
+    [self.internetConnectionReach startNotifier];
+
 }
 
 - (void)viewDidUnload
@@ -163,14 +204,18 @@
         if([reach isReachable])
         {
             NSString * temp = [NSString stringWithFormat:@"GOOGLE Notification Says Reachable(%@)", reach.currentReachabilityString];
-            self.notificationLabel.text = temp;
             NSLog(@"%@", temp);
+
+            self.notificationLabel.text = temp;
+            self.notificationLabel.textColor = [UIColor blackColor];
         }
         else
         {
             NSString * temp = [NSString stringWithFormat:@"GOOGLE Notification Says Unreachable(%@)", reach.currentReachabilityString];
-            self.notificationLabel.text = temp;
             NSLog(@"temp");
+
+            self.notificationLabel.text = temp;
+            self.notificationLabel.textColor = [UIColor redColor];
         }
     }
     else if (reach == self.localWiFiReach)
@@ -179,7 +224,9 @@
         {
             NSString * temp = [NSString stringWithFormat:@"LocalWIFI Notification Says Reachable(%@)", reach.currentReachabilityString];
             NSLog(@"%@", temp);
+
             self.localWifinotificationLabel.text = temp;
+            self.localWifinotificationLabel.textColor = [UIColor blackColor];
         }
         else
         {
@@ -187,8 +234,29 @@
             NSLog(@"%@", temp);
 
             self.localWifinotificationLabel.text = temp;
+            self.localWifinotificationLabel.textColor = [UIColor redColor];
         }
     }
+    else if (reach == self.internetConnectionReach)
+    {
+        if([reach isReachable])
+        {
+            NSString * temp = [NSString stringWithFormat:@"InternetConnection Notification Says Reachable(%@)", reach.currentReachabilityString];
+            NSLog(@"%@", temp);
+
+            self.internetConnectionnotificationLabel.text = temp;
+            self.internetConnectionnotificationLabel.textColor = [UIColor blackColor];
+        }
+        else
+        {
+            NSString * temp = [NSString stringWithFormat:@"InternetConnection Notification Says Unreachable(%@)", reach.currentReachabilityString];
+            NSLog(@"%@", temp);
+
+            self.internetConnectionnotificationLabel.text = temp;
+            self.internetConnectionnotificationLabel.textColor = [UIColor redColor];
+        }
+    }
+
 }
 
 
