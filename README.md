@@ -8,6 +8,8 @@ In addition to the standard `NSNotification`, it supports the use of blocks for 
 
 Finally, you can specify whether a WWAN connection is considered "reachable".
 
+*DO NOT OPEN BUGS UNTIL YOU HAVE TESTED ON DEVICE*
+
 ## Requirements
 
 Once you have added the `.h/m` files to your project, simply:
@@ -33,7 +35,7 @@ This sample uses blocks to notify when the interface state has changed. The bloc
 		// keep in mind this is called on a background thread
 		// and if you are updating the UI it needs to happen
 		// on the main thread, like this:
-		
+
 		dispatch_async(dispatch_get_main_queue(), ^{
 		  NSLog(@"REACHABLE!");
 		});
