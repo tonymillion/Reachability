@@ -28,17 +28,6 @@
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 
-/**
- * Does ARC support GCD objects?
- * It does if the minimum deployment target is iOS 6+ or Mac OS X 8+
- * 
- * @see http://opensource.apple.com/source/libdispatch/libdispatch-228.18/os/object.h
- **/
-#if OS_OBJECT_USE_OBJC
-#define NEEDS_DISPATCH_RETAIN_RELEASE 0
-#else
-#define NEEDS_DISPATCH_RETAIN_RELEASE 1
-#endif
 
 /** 
  * Create NS_ENUM macro if it does not exist on the targeted version of iOS or OS X.
@@ -63,13 +52,14 @@ typedef NS_ENUM(NSInteger, NetworkStatus) {
 typedef void (^NetworkReachable)(Reachability * reachability);
 typedef void (^NetworkUnreachable)(Reachability * reachability);
 
+
 @interface Reachability : NSObject
 
 @property (nonatomic, copy) NetworkReachable    reachableBlock;
 @property (nonatomic, copy) NetworkUnreachable  unreachableBlock;
 
-
 @property (nonatomic, assign) BOOL reachableOnWWAN;
+
 
 +(Reachability*)reachabilityWithHostname:(NSString*)hostname;
 // This is identical to the function above, but is here to maintain
