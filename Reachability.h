@@ -76,7 +76,7 @@ typedef void (^NetworkUnreachable)(Reachability * reachability);
 //compatibility with Apples original code. (see .m)
 +(Reachability*)reachabilityWithHostName:(NSString*)hostname;
 +(Reachability*)reachabilityForInternetConnection;
-+(Reachability*)reachabilityWithAddress:(const struct sockaddr_in*)hostAddress;
++(Reachability*)reachabilityWithAddress:(void *)hostAddress;
 +(Reachability*)reachabilityForLocalWiFi;
 
 -(Reachability *)initWithReachabilityRef:(SCNetworkReachabilityRef)ref;
