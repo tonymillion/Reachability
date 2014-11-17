@@ -214,6 +214,12 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 -(BOOL)startNotifier
 {
     SCNetworkReachabilityContext    context = { 0, NULL, NULL, NULL, NULL };
+
+    // allow start notifier to be called multiple times
+    if(self.reachabilityObject && (self.reachabilityObject == self))
+    {
+        return YES;
+    }
     
     // this should do a retain on ourself, so as long as we're in notifier mode we shouldn't disappear out from under ourselves
     // woah
