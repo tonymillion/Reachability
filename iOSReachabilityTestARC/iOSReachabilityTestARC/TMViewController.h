@@ -10,7 +10,12 @@
 
 @interface TMViewController : UIViewController
 
-@property (assign, nonatomic) IBOutlet UILabel * blockLabel;
-@property (assign, nonatomic) IBOutlet UILabel * notificationLabel;
+@property (weak, nonatomic) IBOutlet UILabel * blockLabel;
+@property (weak, nonatomic) IBOutlet UILabel * notificationLabel;
+
+
+@property (weak, nonatomic) IBOutlet UILabel * localWifiblockLabel;
+@property (weak, nonatomic) IBOutlet UILabel * localWifinotificationLabel;
+
 
 @end
