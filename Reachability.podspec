@@ -23,4 +23,5 @@ Pod::Spec.new do |s|
   s.framework    = 'SystemConfiguration'
   s.ios.deployment_target = "6.0"  #required when you drop non-arc support
   s.osx.deployment_target = "10.8" #required when you drop non-arc support
+  s.requires_arc = true
 end
