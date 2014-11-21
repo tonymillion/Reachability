@@ -21,4 +21,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/tonymillion/Reachability.git', :tag => "v#{s.version}" }
   s.source_files = 'Reachability.{h,m}'
   s.framework    = 'SystemConfiguration'
+  s.ios.deployment_target = "6.0"  #required when you drop non-arc support
+  s.osx.deployment_target = "10.8" #required when you drop non-arc support
+  s.requires_arc = true
 end
