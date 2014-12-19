@@ -61,15 +61,15 @@ typedef void (^NetworkUnreachable)(Reachability * reachability);
 @property (nonatomic, assign) BOOL reachableOnWWAN;
 
 
-+(Reachability*)reachabilityWithHostname:(NSString*)hostname;
++(instancetype)reachabilityWithHostname:(NSString*)hostname;
 // This is identical to the function above, but is here to maintain
 //compatibility with Apples original code. (see .m)
-+(Reachability*)reachabilityWithHostName:(NSString*)hostname;
-+(Reachability*)reachabilityForInternetConnection;
-+(Reachability*)reachabilityWithAddress:(void *)hostAddress;
-+(Reachability*)reachabilityForLocalWiFi;
++(instancetype)reachabilityWithHostName:(NSString*)hostname;
++(instancetype)reachabilityForInternetConnection;
++(instancetype)reachabilityWithAddress:(void *)hostAddress;
++(instancetype)reachabilityForLocalWiFi;
 
--(Reachability *)initWithReachabilityRef:(SCNetworkReachabilityRef)ref;
+-(instancetype)initWithReachabilityRef:(SCNetworkReachabilityRef)ref;
 
 -(BOOL)startNotifier;
 -(void)stopNotifier;
