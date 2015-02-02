@@ -212,7 +212,7 @@
         else
         {
             NSString * temp = [NSString stringWithFormat:@"GOOGLE Notification Says Unreachable(%@)", reach.currentReachabilityString];
-            NSLog(@"temp");
+            NSLog(@"%@", temp);
 
             self.notificationLabel.text = temp;
             self.notificationLabel.textColor = [UIColor redColor];
