@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2011, Tony Million.
+ Copyright (c) 2011-2015, Tony Million.
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without
@@ -62,34 +62,41 @@ typedef void (^NetworkUnreachable)(Reachability * reachability);
 
 
 +(instancetype)reachabilityWithHostname:(NSString*)hostname;
-// This is identical to the function above, but is here to maintain
-//compatibility with Apples original code. (see .m)
-+(instancetype)reachabilityWithHostName:(NSString*)hostname;
 +(instancetype)reachabilityForInternetConnection;
 +(instancetype)reachabilityWithAddress:(void *)hostAddress;
 +(instancetype)reachabilityForLocalWiFi;
 
 -(instancetype)initWithReachabilityRef:(SCNetworkReachabilityRef)ref;
 
+/*
+ Connectivity flags getter/updater
+ */
+-(SCNetworkReachabilityFlags)reachabilityFlags;
+-(SCNetworkReachabilityFlags)synchronousReachabilityFlags;
+-(void)updateReachabilityFlagsCompletion:(void (^)(SCNetworkReachabilityFlags flags, BOOL success))completion;
+
+/*
+ Notifier stuff
+ */
 -(BOOL)startNotifier;
 -(void)stopNotifier;
 
+/*
+ connectivity test stuff
+ */
 -(BOOL)isReachable;
--(BOOL)isReachableViaWWAN;
--(BOOL)isReachableViaWiFi;
+-(NetworkStatus)currentReachabilityStatus;
 
 // WWAN may be available, but not active until a connection has been established.
 // WiFi may require a connection for VPN on Demand.
--(BOOL)isConnectionRequired; // Identical DDG variant.
 -(BOOL)connectionRequired; // Apple's routine.
 // Dynamic, on demand connection?
--(BOOL)isConnectionOnDemand;
+-(BOOL)connectionOnDemand;
 // Is user intervention required?
--(BOOL)isInterventionRequired;
+-(BOOL)interventionRequired;
 
--(NetworkStatus)currentReachabilityStatus;
--(SCNetworkReachabilityFlags)reachabilityFlags;
--(NSString*)currentReachabilityString;
--(NSString*)currentReachabilityFlags;
+
+-(NSString*)reachabilityString;
+-(NSString*)reachabilityFlagsString;
 
 @end
