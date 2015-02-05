@@ -63,7 +63,7 @@
     
     self.googleReach.reachableBlock = ^(Reachability * reachability)
     {
-        NSString * temp = [NSString stringWithFormat:@"GOOGLE Block Says Reachable(%@)", reachability.currentReachabilityString];
+        NSString * temp = [NSString stringWithFormat:@"GOOGLE Block Says Reachable(%@)", reachability.reachabilityString];
         NSLog(@"%@", temp);
 
         // to update UI components from a block callback
@@ -77,7 +77,7 @@
     
     self.googleReach.unreachableBlock = ^(Reachability * reachability)
     {
-        NSString * temp = [NSString stringWithFormat:@"GOOGLE Block Says Unreachable(%@)", reachability.currentReachabilityString];
+        NSString * temp = [NSString stringWithFormat:@"GOOGLE Block Says Unreachable(%@)", reachability.reachabilityString];
         NSLog(@"%@", temp);
 
         // to update UI components from a block callback
@@ -105,7 +105,7 @@
 
     self.localWiFiReach.reachableBlock = ^(Reachability * reachability)
     {
-        NSString * temp = [NSString stringWithFormat:@"LocalWIFI Block Says Reachable(%@)", reachability.currentReachabilityString];
+        NSString * temp = [NSString stringWithFormat:@"LocalWIFI Block Says Reachable(%@)", reachability.reachabilityString];
         NSLog(@"%@", temp);
 
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -116,7 +116,7 @@
 
     self.localWiFiReach.unreachableBlock = ^(Reachability * reachability)
     {
-        NSString * temp = [NSString stringWithFormat:@"LocalWIFI Block Says Unreachable(%@)", reachability.currentReachabilityString];
+        NSString * temp = [NSString stringWithFormat:@"LocalWIFI Block Says Unreachable(%@)", reachability.reachabilityString];
 
         NSLog(@"%@", temp);
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -138,7 +138,7 @@
 
     self.internetConnectionReach.reachableBlock = ^(Reachability * reachability)
     {
-        NSString * temp = [NSString stringWithFormat:@" InternetConnection Says Reachable(%@)", reachability.currentReachabilityString];
+        NSString * temp = [NSString stringWithFormat:@" InternetConnection Says Reachable(%@)", reachability.reachabilityString];
         NSLog(@"%@", temp);
 
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -149,7 +149,7 @@
 
     self.internetConnectionReach.unreachableBlock = ^(Reachability * reachability)
     {
-        NSString * temp = [NSString stringWithFormat:@"InternetConnection Block Says Unreachable(%@)", reachability.currentReachabilityString];
+        NSString * temp = [NSString stringWithFormat:@"InternetConnection Block Says Unreachable(%@)", reachability.reachabilityString];
 
         NSLog(@"%@", temp);
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -203,7 +203,7 @@
     {
         if([reach isReachable])
         {
-            NSString * temp = [NSString stringWithFormat:@"GOOGLE Notification Says Reachable(%@)", reach.currentReachabilityString];
+            NSString * temp = [NSString stringWithFormat:@"GOOGLE Notification Says Reachable(%@)", reach.reachabilityString];
             NSLog(@"%@", temp);
 
             self.notificationLabel.text = temp;
@@ -211,7 +211,7 @@
         }
         else
         {
-            NSString * temp = [NSString stringWithFormat:@"GOOGLE Notification Says Unreachable(%@)", reach.currentReachabilityString];
+            NSString * temp = [NSString stringWithFormat:@"GOOGLE Notification Says Unreachable(%@)", reach.reachabilityString];
             NSLog(@"%@", temp);
 
             self.notificationLabel.text = temp;
@@ -222,7 +222,7 @@
     {
         if([reach isReachable])
         {
-            NSString * temp = [NSString stringWithFormat:@"LocalWIFI Notification Says Reachable(%@)", reach.currentReachabilityString];
+            NSString * temp = [NSString stringWithFormat:@"LocalWIFI Notification Says Reachable(%@)", reach.reachabilityString];
             NSLog(@"%@", temp);
 
             self.localWifinotificationLabel.text = temp;
@@ -230,7 +230,7 @@
         }
         else
         {
-            NSString * temp = [NSString stringWithFormat:@"LocalWIFI Notification Says Unreachable(%@)", reach.currentReachabilityString];
+            NSString * temp = [NSString stringWithFormat:@"LocalWIFI Notification Says Unreachable(%@)", reach.reachabilityString];
             NSLog(@"%@", temp);
 
             self.localWifinotificationLabel.text = temp;
@@ -241,7 +241,7 @@
     {
         if([reach isReachable])
         {
-            NSString * temp = [NSString stringWithFormat:@"InternetConnection Notification Says Reachable(%@)", reach.currentReachabilityString];
+            NSString * temp = [NSString stringWithFormat:@"InternetConnection Notification Says Reachable(%@)", reach.reachabilityString];
             NSLog(@"%@", temp);
 
             self.internetConnectionnotificationLabel.text = temp;
@@ -249,7 +249,7 @@
         }
         else
         {
-            NSString * temp = [NSString stringWithFormat:@"InternetConnection Notification Says Unreachable(%@)", reach.currentReachabilityString];
+            NSString * temp = [NSString stringWithFormat:@"InternetConnection Notification Says Unreachable(%@)", reach.reachabilityString];
             NSLog(@"%@", temp);
 
             self.internetConnectionnotificationLabel.text = temp;
