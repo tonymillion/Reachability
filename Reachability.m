@@ -94,6 +94,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 @synthesize reachabilityObject = _reachabilityObject;
 @synthesize reachableBlock = _reachableBlock;
 @synthesize unreachableBlock = _unreachableBlock;
+@synthesize reachabilityChangedBlock = _reachabilityChangedBlock;
 @synthesize reachableOnWWAN = _reachableOnWWAN;
 
 #pragma mark - Class Constructor Methods
@@ -181,8 +182,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
         self.reachabilityRef = nil;
     }
 
-	self.reachableBlock          = nil;
-	self.unreachableBlock        = nil;
+    self.reachableBlock             = nil;
+    self.unreachableBlock           = nil;
+    self.reachabilityChangedBlock   = nil;
 #if !OS_OBJECT_USE_OBJC
 	dispatch_release(_reachabilitySerialQueue);
 	_reachabilitySerialQueue = nil;
@@ -450,6 +452,11 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 -(void)reachabilityChanged:(SCNetworkReachabilityFlags)flags
 {
+    if(self.reachabilityChangedBlock)
+    {
+        self.reachabilityChangedBlock(self, flags);
+    }
+    
     if([self isReachableWithFlags:flags])
     {
         if(self.reachableBlock)

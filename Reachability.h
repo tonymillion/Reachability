@@ -49,16 +49,18 @@ typedef NS_ENUM(NSInteger, NetworkStatus) {
 
 @class Reachability;
 
-typedef void (^NetworkReachable)(Reachability * reachability);
-typedef void (^NetworkUnreachable)(Reachability * reachability);
+typedef void (^NetworkReachable)(Reachability *reachability);
+typedef void (^NetworkUnreachable)(Reachability *reachability);
+typedef void (^NetworkReachabilityChanged)(Reachability *reachability, SCNetworkReachabilityFlags flags);
 
 
 @interface Reachability : NSObject
 
-@property (nonatomic, copy) NetworkReachable    reachableBlock;
-@property (nonatomic, copy) NetworkUnreachable  unreachableBlock;
+@property (nonatomic, copy) NetworkReachable            reachableBlock;
+@property (nonatomic, copy) NetworkUnreachable          unreachableBlock;
+@property (nonatomic, copy) NetworkReachabilityChanged  reachabilityChangedBlock;
 
-@property (nonatomic, assign) BOOL reachableOnWWAN;
+@property (nonatomic, assign) BOOL                      reachableOnWWAN;
 
 
 +(instancetype)reachabilityWithHostname:(NSString*)hostname;
