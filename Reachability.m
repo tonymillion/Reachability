@@ -41,11 +41,6 @@ NSString *const kReachabilityChangedNotification = @"kReachabilityChangedNotific
 @interface Reachability ()
 
 @property (nonatomic, assign) SCNetworkReachabilityRef  reachabilityRef;
-#if !OS_OBJECT_USE_OBJC
-@property (nonatomic, assign) dispatch_queue_t          reachabilitySerialQueue;
-#else
-@property (nonatomic, strong) dispatch_queue_t          reachabilitySerialQueue;
-#endif
 @property (nonatomic, strong) id                        reachabilityObject;
 
 -(void)reachabilityChanged:(SCNetworkReachabilityFlags)flags;
@@ -166,7 +161,11 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
         // We need to create a serial queue.
         // We allocate this once for the lifetime of the notifier.
 
+#if !OS_OBJECT_USE_OBJC
+        _reachabilitySerialQueue = dispatch_queue_create("com.tonymillion.reachability", NULL);
+#else
         self.reachabilitySerialQueue = dispatch_queue_create("com.tonymillion.reachability", NULL);
+#endif
     }
     
     return self;    
@@ -186,12 +185,28 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     self.unreachableBlock           = nil;
     self.reachabilityChangedBlock   = nil;
 #if !OS_OBJECT_USE_OBJC
-	dispatch_release(_reachabilitySerialQueue);
-	_reachabilitySerialQueue = nil;
+    dispatch_release(_reachabilitySerialQueue);
+    _reachabilitySerialQueue        = nil;
 #else
-	self.reachabilitySerialQueue = nil;
+    self.reachabilitySerialQueue    = nil;
 #endif
 }
+
+#if !OS_OBJECT_USE_OBJC
+- (void)setReachabilitySerialQueue:(dispatch_queue_t)reachabilitySerialQueue
+{
+    NSAssert(self.reachabilityObject == nil, @"Cannot change serial queue while notifier is started");
+    
+    if (reachabilitySerialQueue == nil) {
+        dispatch_release(_reachabilitySerialQueue);
+        _reachabilitySerialQueue = dispatch_queue_create("com.tonymillion.reachability", NULL);
+    } else {
+        dispatch_retain(reachabilitySerialQueue);
+        dispatch_release(_reachabilitySerialQueue);
+        _reachabilitySerialQueue = reachabilitySerialQueue;
+    }
+}
+#endif
 
 #pragma mark - Notifier Methods
 

@@ -60,6 +60,12 @@ typedef void (^NetworkReachabilityChanged)(Reachability *reachability, SCNetwork
 @property (nonatomic, copy) NetworkUnreachable          unreachableBlock;
 @property (nonatomic, copy) NetworkReachabilityChanged  reachabilityChangedBlock;
 
+#if !OS_OBJECT_USE_OBJC
+@property (nonatomic, assign) dispatch_queue_t          reachabilitySerialQueue;
+#else
+@property (nonatomic, strong) dispatch_queue_t          reachabilitySerialQueue;
+#endif
+
 @property (nonatomic, assign) BOOL                      reachableOnWWAN;
 
 
