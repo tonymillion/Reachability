@@ -85,6 +85,12 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 
 @implementation Reachability
+@synthesize reachabilityRef = _reachabilityRef;
+@synthesize reachabilitySerialQueue = _reachabilitySerialQueue;
+@synthesize reachabilityObject = _reachabilityObject;
+@synthesize reachableBlock = _reachableBlock;
+@synthesize unreachableBlock = _unreachableBlock;
+@synthesize reachableOnWWAN = _reachableOnWWAN;
 
 #pragma mark - Class Constructor Methods
 
