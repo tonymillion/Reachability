@@ -41,7 +41,11 @@ NSString *const kReachabilityChangedNotification = @"kReachabilityChangedNotific
 @interface Reachability ()
 
 @property (nonatomic, assign) SCNetworkReachabilityRef  reachabilityRef;
+#if !OS_OBJECT_USE_OBJC
+@property (nonatomic, assign) dispatch_queue_t          reachabilitySerialQueue;
+#else
 @property (nonatomic, strong) dispatch_queue_t          reachabilitySerialQueue;
+#endif
 @property (nonatomic, strong) id                        reachabilityObject;
 
 -(void)reachabilityChanged:(SCNetworkReachabilityFlags)flags;
@@ -179,7 +183,12 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 	self.reachableBlock          = nil;
 	self.unreachableBlock        = nil;
-    self.reachabilitySerialQueue = nil;
+#if !OS_OBJECT_USE_OBJC
+	dispatch_release(_reachabilitySerialQueue);
+	_reachabilitySerialQueue = nil;
+#else
+	self.reachabilitySerialQueue = nil;
+#endif
 }
 
 #pragma mark - Notifier Methods
