@@ -10,6 +10,8 @@ Finally, you can specify whether a WWAN connection is considered "reachable".
 
 *DO NOT OPEN BUGS UNTIL YOU HAVE TESTED ON DEVICE*
 
+**BEFORE YOU OPEN A BUG ABOUT iOS6/iOS5 build errors, use Tag 3.2 or 3.1 as they support assign types**
+
 ## Requirements
 
 Once you have added the `.h/m` files to your project, simply:
