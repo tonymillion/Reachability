@@ -1,5 +1,7 @@
 [![Reference Status](https://www.versioneye.com/objective-c/reachability/reference_badge.svg?style=flat)](https://www.versioneye.com/objective-c/reachability/references)
 
+# **WARNING** there have been reports of apps being rejected when Reachability is used in a framework. The only solution to this so far is to rename the class.
+
 # Reachability
 
 This is a drop-in replacement for Apple's `Reachability` class. It is ARC-compatible, and it uses the new GCD methods to notify of network interface changes.
