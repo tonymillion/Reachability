@@ -172,7 +172,8 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     }
 
 	self.reachableBlock          = nil;
-	self.unreachableBlock        = nil;
+    self.unreachableBlock        = nil;
+    self.reachabilityBlock       = nil;
     self.reachabilitySerialQueue = nil;
 }
 
@@ -448,6 +449,11 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
         {
             self.unreachableBlock(self);
         }
+    }
+    
+    if(self.reachabilityBlock)
+    {
+        self.reachabilityBlock(self, flags);
     }
     
     // this makes sure the change notification happens on the MAIN THREAD
