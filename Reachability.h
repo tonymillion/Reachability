@@ -28,6 +28,11 @@
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 
+//! Project version number for MacOSReachability.
+FOUNDATION_EXPORT double ReachabilityVersionNumber;
+
+//! Project version string for MacOSReachability.
+FOUNDATION_EXPORT const unsigned char ReachabilityVersionString[];
 
 /** 
  * Create NS_ENUM macro if it does not exist on the targeted version of iOS or OS X.
