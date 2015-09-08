@@ -86,7 +86,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
         reach.startNotifier()
 	
         return true
-    }
+}
 ```
 
 ### `NSNotification` Example
@@ -115,11 +115,11 @@ In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDM
 #### In Swift
 
 ```
-	import Reachability
+import Reachability
 
-	var reach: Reachability?
+var reach: Reachability?
 
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Allocate a reachability object
         self.reach = Reachability.reachabilityForInternetConnection()
         
@@ -138,13 +138,13 @@ In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDM
         return true
      }
         
-     func reachabilityChanged(notification: NSNotification) {
+func reachabilityChanged(notification: NSNotification) {
       	if self.reach!.isReachableViaWiFi() || self.reach!.isReachableViaWWAN() {
       		println("Service avalaible!!!")
       	} else {
       		println("No service avalaible!!!")
        	}
-     }
+}
 ```
 
 ## Tell the world
