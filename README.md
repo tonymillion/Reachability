@@ -64,10 +64,10 @@ var reach: Reachability?
 
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Allocate a reachability object
-        let reach = Reachability.reachabilityForInternetConnection()
+        self.reach = Reachability.reachabilityForInternetConnection()
         
         // Set the blocks
-        reach.reachableBlock = {
+        self.reach!.reachableBlock = {
             (let reach: Reachability!) -> Void in
             
             // keep in mind this is called on a background thread
@@ -78,12 +78,12 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
             }
         }
         
-        reach.unreachableBlock = {
+        self.reach!.unreachableBlock = {
             (let reach: Reachability!) -> Void in
             println("UNREACHABLE!")
         }
         
-        reach.startNotifier()
+        self.reach!.startNotifier()
 	
         return true
 }
@@ -136,7 +136,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
         self.reach!.startNotifier()
         
         return true
-     }
+}
         
 func reachabilityChanged(notification: NSNotification) {
       	if self.reach!.isReachableViaWiFi() || self.reach!.isReachableViaWWAN() {
