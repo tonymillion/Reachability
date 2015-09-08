@@ -135,13 +135,13 @@ In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDM
         return true
      }
         
-        func reachabilityChanged(notification: NSNotification) {
-        	if self.reach!.isReachableViaWiFi() || self.reach!.isReachableViaWWAN() {
-            		println("Service avalaible!!!")
-        	} else {
-            		println("No service avalaible!!!")
-        	}
-    	}
+     func reachabilityChanged(notification: NSNotification) {
+      	if self.reach!.isReachableViaWiFi() || self.reach!.isReachableViaWWAN() {
+      		println("Service avalaible!!!")
+      	} else {
+      		println("No service avalaible!!!")
+       	}
+     }
 
 ## Tell the world
 
