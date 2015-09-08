@@ -57,9 +57,9 @@ This sample uses blocks to notify when the interface state has changed. The bloc
 
 ### In Swift
 
-	import Reachability
+        import Reachability
 
-	var reach: Reachability?
+        var reach: Reachability?
 
 		func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Allocate a reachability object
@@ -84,7 +84,7 @@ This sample uses blocks to notify when the interface state has changed. The bloc
         
         reach.startNotifier()
 	
-	return true
+        return true
     }
 
 ### `NSNotification` Example
