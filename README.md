@@ -30,6 +30,8 @@ Boom, you're done.
 
 This sample uses blocks to notify when the interface state has changed. The blocks will be called on a **BACKGROUND THREAD**, so you need to dispatch UI updates onto the main thread.
 
+#### In Objective-C
+
 	// Allocate a reachability object
 	Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
 
@@ -52,6 +54,32 @@ This sample uses blocks to notify when the interface state has changed. The bloc
 
 	// Start the notifier, which will cause the reachability object to retain itself!
 	[reach startNotifier];
+
+### In Swift
+
+	import Reachability
+
+        // Allocate a reachability object
+        let reach = Reachability.reachabilityForInternetConnection()
+        
+        // Set the blocks
+        reach.reachableBlock = {
+            (let reach: Reachability!) -> Void in
+            
+            // keep in mind this is called on a background thread
+            // and if you are updating the UI it needs to happen
+            // on the main thread, like this:
+            dispatch_async(dispatch_get_main_queue()) {
+                println("REACHABLE!")
+            }
+        }
+        
+        reach.unreachableBlock = {
+            (let reach: Reachability!) -> Void in
+            println("UNREACHABLE!")
+        }
+        
+        reach.startNotifier()
 
 ### `NSNotification` Example
 
