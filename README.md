@@ -57,6 +57,7 @@ This sample uses blocks to notify when the interface state has changed. The bloc
 
 ### In Swift
 
+```
 import Reachability
 
 var reach: Reachability?
@@ -86,6 +87,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	
         return true
     }
+```
 
 ### `NSNotification` Example
 
@@ -112,6 +114,7 @@ In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDM
 
 #### In Swift
 
+```
 	import Reachability
 
 	var reach: Reachability?
@@ -142,6 +145,7 @@ In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDM
       		println("No service avalaible!!!")
        	}
      }
+```
 
 ## Tell the world
 
