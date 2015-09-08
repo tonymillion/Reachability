@@ -59,6 +59,8 @@ This sample uses blocks to notify when the interface state has changed. The bloc
 
 	import Reachability
 
+	var reach: Reachability?
+
 		func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Allocate a reachability object
         let reach = Reachability.reachabilityForInternetConnection()
@@ -109,6 +111,8 @@ In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDM
 	[reach startNotifier];
 
 #### In Swift
+
+	import Reachability
 
 	var reach: Reachability?
 
