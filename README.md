@@ -30,6 +30,8 @@ Boom, you're done.
 
 This sample uses blocks to notify when the interface state has changed. The blocks will be called on a **BACKGROUND THREAD**, so you need to dispatch UI updates onto the main thread.
 
+#### In Objective-C
+
 	// Allocate a reachability object
 	Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
 
@@ -53,11 +55,47 @@ This sample uses blocks to notify when the interface state has changed. The bloc
 	// Start the notifier, which will cause the reachability object to retain itself!
 	[reach startNotifier];
 
+### In Swift
+
+```
+import Reachability
+
+var reach: Reachability?
+
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Allocate a reachability object
+        self.reach = Reachability.reachabilityForInternetConnection()
+        
+        // Set the blocks
+        self.reach!.reachableBlock = {
+            (let reach: Reachability!) -> Void in
+            
+            // keep in mind this is called on a background thread
+            // and if you are updating the UI it needs to happen
+            // on the main thread, like this:
+            dispatch_async(dispatch_get_main_queue()) {
+                println("REACHABLE!")
+            }
+        }
+        
+        self.reach!.unreachableBlock = {
+            (let reach: Reachability!) -> Void in
+            println("UNREACHABLE!")
+        }
+        
+        self.reach!.startNotifier()
+	
+        return true
+}
+```
+
 ### `NSNotification` Example
 
 This sample will use `NSNotification`s to notify when the interface has changed. They will be delivered on the **MAIN THREAD**, so you *can* do UI updates from within the function.
 
 In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDMA) as a non-reachable connection (you might use this if you are writing a video streaming app, for example, to save the user's data plan).
+
+#### In Objective-C
 
 	// Allocate a reachability object
 	Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
@@ -73,6 +111,41 @@ In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDM
 											   object:nil];
 
 	[reach startNotifier];
+
+#### In Swift
+
+```
+import Reachability
+
+var reach: Reachability?
+
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Allocate a reachability object
+        self.reach = Reachability.reachabilityForInternetConnection()
+        
+        // Tell the reachability that we DON'T want to be reachable on 3G/EDGE/CDMA
+        self.reach!.reachableOnWWAN = false
+        
+        // Here we set up a NSNotification observer. The Reachability that caused the notification
+        // is passed in the object parameter
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: "reachabilityChanged:",
+                                                         name: kReachabilityChangedNotification,
+                                                         object: nil)
+        
+        self.reach!.startNotifier()
+        
+        return true
+}
+        
+func reachabilityChanged(notification: NSNotification) {
+      	if self.reach!.isReachableViaWiFi() || self.reach!.isReachableViaWWAN() {
+      		println("Service avalaible!!!")
+      	} else {
+      		println("No service avalaible!!!")
+       	}
+}
+```
 
 ## Tell the world
 
