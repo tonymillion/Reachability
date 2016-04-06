@@ -75,6 +75,7 @@ typedef void (^NetworkReachability)(Reachability * reachability, SCNetworkConnec
 +(instancetype)reachabilityForInternetConnection;
 +(instancetype)reachabilityWithAddress:(void *)hostAddress;
 +(instancetype)reachabilityForLocalWiFi;
++(instancetype)reachabilityWithURL:(NSURL*)url;
 
 -(instancetype)initWithReachabilityRef:(SCNetworkReachabilityRef)ref;
 
