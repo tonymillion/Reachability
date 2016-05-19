@@ -22,7 +22,7 @@
  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- POSSIBILITY OF SUCH DAMAGE. 
+ POSSIBILITY OF SUCH DAMAGE.
  */
 
 #import <Foundation/Foundation.h>
@@ -34,7 +34,7 @@ FOUNDATION_EXPORT double ReachabilityVersionNumber;
 //! Project version string for MacOSReachability.
 FOUNDATION_EXPORT const unsigned char ReachabilityVersionString[];
 
-/** 
+/**
  * Create NS_ENUM macro if it does not exist on the targeted version of iOS or OS X.
  *
  * @see http://nshipster.com/ns_enum-ns_options/
@@ -68,35 +68,35 @@ typedef void (^NetworkReachability)(Reachability * reachability, SCNetworkConnec
 @property (nonatomic, assign) BOOL reachableOnWWAN;
 
 
-+(instancetype)reachabilityWithHostname:(NSString*)hostname;
++ (instancetype)reachabilityWithHostname:(NSString*)hostname;
 // This is identical to the function above, but is here to maintain
 //compatibility with Apples original code. (see .m)
-+(instancetype)reachabilityWithHostName:(NSString*)hostname;
-+(instancetype)reachabilityForInternetConnection;
-+(instancetype)reachabilityWithAddress:(void *)hostAddress;
-+(instancetype)reachabilityForLocalWiFi;
++ (instancetype)reachabilityWithHostName:(NSString*)hostname;
++ (instancetype)reachabilityForInternetConnection;
++ (instancetype)reachabilityWithAddress:(void *)hostAddress;
++ (instancetype)reachabilityForLocalWiFi;
 
--(instancetype)initWithReachabilityRef:(SCNetworkReachabilityRef)ref;
+- (instancetype)initWithReachabilityRef:(SCNetworkReachabilityRef)ref;
 
--(BOOL)startNotifier;
--(void)stopNotifier;
+- (BOOL)startNotifier;
+- (void)stopNotifier;
 
--(BOOL)isReachable;
--(BOOL)isReachableViaWWAN;
--(BOOL)isReachableViaWiFi;
+- (BOOL)isReachable;
+- (BOOL)isReachableViaWWAN;
+- (BOOL)isReachableViaWiFi;
 
 // WWAN may be available, but not active until a connection has been established.
 // WiFi may require a connection for VPN on Demand.
--(BOOL)isConnectionRequired; // Identical DDG variant.
--(BOOL)connectionRequired; // Apple's routine.
+- (BOOL)isConnectionRequired; // Identical DDG variant.
+- (BOOL)connectionRequired; // Apple's routine.
 // Dynamic, on demand connection?
--(BOOL)isConnectionOnDemand;
+- (BOOL)isConnectionOnDemand;
 // Is user intervention required?
--(BOOL)isInterventionRequired;
+- (BOOL)isInterventionRequired;
 
--(NetworkStatus)currentReachabilityStatus;
--(SCNetworkReachabilityFlags)reachabilityFlags;
--(NSString*)currentReachabilityString;
--(NSString*)currentReachabilityFlags;
+- (NetworkStatus)currentReachabilityStatus;
+- (SCNetworkReachabilityFlags)reachabilityFlags;
+- (NSString*)currentReachabilityString;
+- (NSString*)currentReachabilityFlags;
 
 @end
