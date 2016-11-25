@@ -42,7 +42,6 @@ NSString *const kReachabilityChangedNotification = @"kReachabilityChangedNotific
 
 @property (nonatomic, assign) SCNetworkReachabilityRef  reachabilityRef;
 @property (nonatomic, strong) dispatch_queue_t          reachabilitySerialQueue;
-@property (nonatomic, strong) id                        reachabilityObject;
 
 -(void)reachabilityChanged:(SCNetworkReachabilityFlags)flags;
 -(BOOL)isReachableWithFlags:(SCNetworkReachabilityFlags)flags;
@@ -186,24 +185,16 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 -(BOOL)startNotifier
 {
-    // allow start notifier to be called multiple times
-    if(self.reachabilityObject && (self.reachabilityObject == self))
-    {
-        return YES;
-    }
-
-
     SCNetworkReachabilityContext    context = { 0, NULL, NULL, NULL, NULL };
     context.info = (__bridge void *)self;
+    context.retain = CFRetain;
+    context.release = CFRelease;
 
     if(SCNetworkReachabilitySetCallback(self.reachabilityRef, TMReachabilityCallback, &context))
     {
         // Set it as our reachability queue, which will retain the queue
         if(SCNetworkReachabilitySetDispatchQueue(self.reachabilityRef, self.reachabilitySerialQueue))
         {
-            // this should do a retain on ourself, so as long as we're in notifier mode we shouldn't disappear out from under ourselves
-            // woah
-            self.reachabilityObject = self;
             return YES;
         }
         else
@@ -224,7 +215,6 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     }
 
     // if we get here we fail at the internet
-    self.reachabilityObject = nil;
     return NO;
 }
 
@@ -235,8 +225,6 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     
     // Unregister target from the GCD serial dispatch queue.
     SCNetworkReachabilitySetDispatchQueue(self.reachabilityRef, NULL);
-
-    self.reachabilityObject = nil;
 }
 
 #pragma mark - reachability tests
