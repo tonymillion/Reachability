@@ -32,32 +32,34 @@ This sample uses blocks to notify when the interface state has changed. The bloc
 
 #### In Objective-C
 
-	// Allocate a reachability object
-	Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+```objc
+// Allocate a reachability object
+Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
 
-	// Set the blocks
-	reach.reachableBlock = ^(Reachability*reach)
-	{
-		// keep in mind this is called on a background thread
-		// and if you are updating the UI it needs to happen
-		// on the main thread, like this:
+// Set the blocks
+reach.reachableBlock = ^(Reachability*reach)
+{
+    // keep in mind this is called on a background thread
+    // and if you are updating the UI it needs to happen
+    // on the main thread, like this:
 
-		dispatch_async(dispatch_get_main_queue(), ^{
-		  NSLog(@"REACHABLE!");
-		});
-	};
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"REACHABLE!");
+    });
+};
 
-	reach.unreachableBlock = ^(Reachability*reach)
-	{
-		NSLog(@"UNREACHABLE!");
-	};
+reach.unreachableBlock = ^(Reachability*reach)
+{
+    NSLog(@"UNREACHABLE!");
+};
 
-	// Start the notifier, which will cause the reachability object to retain itself!
-	[reach startNotifier];
+// Start the notifier, which will cause the reachability object to retain itself!
+[reach startNotifier];
+```
 
 ### In Swift 3
 
-```
+```swift
 import Reachability
 
 var reach: Reachability?
@@ -84,7 +86,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
         }
         
         self.reach!.startNotifier()
-	
+    
         return true
 }
 ```
@@ -97,53 +99,57 @@ In addition, it asks the `Reachability` object to consider the WWAN (3G/EDGE/CDM
 
 #### In Objective-C
 
-	// Allocate a reachability object
-	Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+```objc
+// Allocate a reachability object
+Reachability* reach = [Reachability reachabilityWithHostname:@"www.google.com"];
 
-	// Tell the reachability that we DON'T want to be reachable on 3G/EDGE/CDMA
-	reach.reachableOnWWAN = NO;
+// Tell the reachability that we DON'T want to be reachable on 3G/EDGE/CDMA
+reach.reachableOnWWAN = NO;
 
-	// Here we set up a NSNotification observer. The Reachability that caused the notification
-	// is passed in the object parameter
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(reachabilityChanged:)
-												 name:kReachabilityChangedNotification
-											   object:nil];
+// Here we set up a NSNotification observer. The Reachability that caused the notification
+// is passed in the object parameter
+[[NSNotificationCenter defaultCenter] addObserver:self
+                                         selector:@selector(reachabilityChanged:)
+                                             name:kReachabilityChangedNotification
+                                           object:nil];
 
-	[reach startNotifier];
+[reach startNotifier];
+```
 
 #### In Swift 3
 
-```
+```swift
 import Reachability
 
 var reach: Reachability?
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Allocate a reachability object
-        self.reach = Reachability.forInternetConnection()
-        
-        // Tell the reachability that we DON'T want to be reachable on 3G/EDGE/CDMA
-        self.reach!.reachableOnWWAN = false
-        
-        // Here we set up a NSNotification observer. The Reachability that caused the notification
-        // is passed in the object parameter
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(reachabilityChanged),
-                                               name: NSNotification.Name.reachabilityChanged,
-                                               object: nil)
-        
-        self.reach!.startNotifier()
-        
-        return true
+    // Allocate a reachability object
+    self.reach = Reachability.forInternetConnection()
+    
+    // Tell the reachability that we DON'T want to be reachable on 3G/EDGE/CDMA
+    self.reach!.reachableOnWWAN = false
+    
+    // Here we set up a NSNotification observer. The Reachability that caused the notification
+    // is passed in the object parameter
+    NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(reachabilityChanged),
+        name: NSNotification.Name.reachabilityChanged,
+        object: nil
+    )
+    
+    self.reach!.startNotifier()
+    
+    return true
 }
         
 func reachabilityChanged(notification: NSNotification) {
-      	if self.reach!.isReachableViaWiFi() || self.reach!.isReachableViaWWAN() {
-      		print("Service avalaible!!!")
-      	} else {
-      		print("No service avalaible!!!")
-       	}
+    if self.reach!.isReachableViaWiFi() || self.reach!.isReachableViaWWAN() {
+        print("Service avalaible!!!")
+    } else {
+        print("No service avalaible!!!")
+    }
 }
 ```
 
