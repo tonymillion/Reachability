@@ -40,7 +40,7 @@ NSString *const kReachabilityChangedNotification = @"kReachabilityChangedNotific
 
 @interface Reachability ()
 
-@property (nonatomic, assign) SCNetworkReachabilityRef  reachabilityRef;
+@property (nonatomic, strong) __attribute__((NSObject)) SCNetworkReachabilityRef  reachabilityRef;
 @property (nonatomic, strong) dispatch_queue_t          reachabilitySerialQueue;
 @property (nonatomic, strong) id                        reachabilityObject;
 
@@ -99,6 +99,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     if (ref) 
     {
         id reachability = [[self alloc] initWithReachabilityRef:ref];
+        CFRelease(ref);
 
         return reachability;
     }
@@ -112,6 +113,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     if (ref) 
     {
         id reachability = [[self alloc] initWithReachabilityRef:ref];
+        CFRelease(ref);
         
         return reachability;
     }
@@ -165,12 +167,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 {
     [self stopNotifier];
 
-    if(self.reachabilityRef)
-    {
-        CFRelease(self.reachabilityRef);
-        self.reachabilityRef = nil;
-    }
-
+    self.reachabilityRef         = nil;
 	self.reachableBlock          = nil;
     self.unreachableBlock        = nil;
     self.reachabilityBlock       = nil;
