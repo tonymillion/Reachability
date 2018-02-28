@@ -146,9 +146,9 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
         
 func reachabilityChanged(notification: NSNotification) {
     if self.reach!.isReachableViaWiFi() || self.reach!.isReachableViaWWAN() {
-        print("Service avalaible!!!")
+        print("Service available!!!")
     } else {
-        print("No service avalaible!!!")
+        print("No service available!!!")
     }
 }
 ```
