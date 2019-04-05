@@ -28,6 +28,11 @@
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 
+//! Project version number for MacOSReachability.
+FOUNDATION_EXPORT double ReachabilityVersionNumber;
+
+//! Project version string for MacOSReachability.
+FOUNDATION_EXPORT const unsigned char ReachabilityVersionString[];
 
 /** 
  * Create NS_ENUM macro if it does not exist on the targeted version of iOS or OS X.
@@ -51,12 +56,14 @@ typedef NS_ENUM(NSInteger, NetworkStatus) {
 
 typedef void (^NetworkReachable)(Reachability * reachability);
 typedef void (^NetworkUnreachable)(Reachability * reachability);
+typedef void (^NetworkReachability)(Reachability * reachability, SCNetworkConnectionFlags flags);
 
 
 @interface Reachability : NSObject
 
 @property (nonatomic, copy) NetworkReachable    reachableBlock;
 @property (nonatomic, copy) NetworkUnreachable  unreachableBlock;
+@property (nonatomic, copy) NetworkReachability reachabilityBlock;
 
 @property (nonatomic, assign) BOOL reachableOnWWAN;
 
