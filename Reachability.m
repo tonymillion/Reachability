@@ -27,6 +27,7 @@
 
 #import "Reachability.h"
 
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <sys/socket.h>
 #import <netinet/in.h>
 #import <netinet6/in6.h>
@@ -81,6 +82,26 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     {
         [reachability reachabilityChanged:flags];
     }
+}
+
+static CellularConnectionType cellularConnectionType(NSString *type) {
+    if (!type) {
+        return CellularConnectionTypeNone;
+    }
+    
+    return [@{
+              CTRadioAccessTechnologyGPRS : @(CellularConnectionTypeGPRS),
+              CTRadioAccessTechnologyEdge : @(CellularConnectionTypeEdge),
+              CTRadioAccessTechnologyWCDMA : @(CellularConnectionType3G),
+              CTRadioAccessTechnologyHSDPA : @(CellularConnectionType3G),
+              CTRadioAccessTechnologyHSUPA : @(CellularConnectionType3G),
+              CTRadioAccessTechnologyCDMA1x : @(CellularConnectionTypeEdge),
+              CTRadioAccessTechnologyCDMAEVDORev0 : @(CellularConnectionType3G),
+              CTRadioAccessTechnologyCDMAEVDORevA : @(CellularConnectionType3G),
+              CTRadioAccessTechnologyCDMAEVDORevB : @(CellularConnectionType3G),
+              CTRadioAccessTechnologyeHRPD : @(CellularConnectionType3G),
+              CTRadioAccessTechnologyLTE : @(CellularConnectionType4G),
+    }[type] integerValue];
 }
 
 
@@ -463,6 +484,12 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 -(NSString*)currentReachabilityFlags
 {
     return reachabilityFlags([self reachabilityFlags]);
+}
+
+#pragma mark - Cellular connection type
+
+-(CellularConnectionType)currentCellularConnectionType {
+    return cellularConnectionType([CTTelephonyNetworkInfo new].currentRadioAccessTechnology);
 }
 
 #pragma mark - Callback function calls this method
