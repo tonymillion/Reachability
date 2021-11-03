@@ -1,0 +1,40 @@
+name: "Reachability CI"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  Pods:
+    name: Cocoapods Lint (Latest Stable Xcode)
+    runs-on: macOS-11
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Xcode version
+        uses: maxim-lobanov/setup-xcode@v1.4.0
+        with: 
+          xcode-version: latest-stable
+
+      - name: Run pod lib lint
+        run: pod lib lint --fail-fast
+          
+  SwiftPM:
+    name: SwiftPM (Latest Stable Xcode)
+    runs-on: macOS-11
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Xcode version
+        uses: maxim-lobanov/setup-xcode@v1.4.0
+        with: 
+          xcode-version: latest-stable 
+
+      - name: Build
+        run: swift build
