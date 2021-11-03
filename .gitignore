@@ -23,3 +23,8 @@ build/
 *.mode2v3
 
 xcuserdata
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved

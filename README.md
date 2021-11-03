@@ -1,4 +1,5 @@
 [![Reference Status](https://www.versioneye.com/objective-c/reachability/reference_badge.svg?style=flat)](https://www.versioneye.com/objective-c/reachability/references)
+[![build-status](https://github.com/tonymillion/Reachability/actions/workflows/CI.yml/badge.svg)](https://github.com/tonymillion/Reachability/actions)
 
 # **WARNING** there have been reports of apps being rejected when Reachability is used in a framework. The only solution to this so far is to rename the class.
 
