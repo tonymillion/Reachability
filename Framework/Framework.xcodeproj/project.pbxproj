@@ -7,13 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D51EB521D42138A00520C60 /* iOSReachability-static.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0D51EB511D42138A00520C60 /* iOSReachability-static.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D51EB571D4213A900520C60 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2F0101B4EE700002D66BB /* Reachability.m */; };
+		0D51EB581D4213B200520C60 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2F0101B4EE700002D66BB /* Reachability.m */; };
+		0D51EB591D4213D300520C60 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 86E2F00F1B4EE700002D66BB /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		86E2F0111B4EE700002D66BB /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 86E2F00F1B4EE700002D66BB /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		86E2F0121B4EE700002D66BB /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 86E2F00F1B4EE700002D66BB /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		86E2F0131B4EE700002D66BB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2F0101B4EE700002D66BB /* Reachability.m */; };
 		86E2F0141B4EE700002D66BB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E2F0101B4EE700002D66BB /* Reachability.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0D51EB3F1D42134300520C60 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				0D51EB521D42138A00520C60 /* iOSReachability-static.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0D51EB411D42134300520C60 /* libiOSReachabilityLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiOSReachabilityLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D51EB4F1D42138A00520C60 /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D51EB511D42138A00520C60 /* iOSReachability-static.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOSReachability-static.h"; sourceTree = "<group>"; };
+		0D51EB531D42138A00520C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86E2EFD41B4EE3C9002D66BB /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86E2EFD71B4EE3C9002D66BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86E2EFF21B4EE3DE002D66BB /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +43,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0D51EB3E1D42134300520C60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D51EB4B1D42138A00520C60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86E2EFD01B4EE3C9002D66BB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,10 +74,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D51EB501D42138A00520C60 /* iOSReachability-static */ = {
+			isa = PBXGroup;
+			children = (
+				0D51EB511D42138A00520C60 /* iOSReachability-static.h */,
+				0D51EB531D42138A00520C60 /* Info.plist */,
+			);
+			path = "iOSReachability-static";
+			sourceTree = "<group>";
+		};
 		86E2EFA91B4EE3A2002D66BB = {
 			isa = PBXGroup;
 			children = (
 				86E2F00E1B4EE6D5002D66BB /* Framework */,
+				0D51EB501D42138A00520C60 /* iOSReachability-static */,
 				86E2EFB41B4EE3A2002D66BB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +97,8 @@
 			children = (
 				86E2EFD41B4EE3C9002D66BB /* Reachability.framework */,
 				86E2EFF21B4EE3DE002D66BB /* Reachability.framework */,
+				0D51EB411D42134300520C60 /* libiOSReachabilityLib.a */,
+				0D51EB4F1D42138A00520C60 /* Reachability.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +116,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		0D51EB4C1D42138A00520C60 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D51EB591D4213D300520C60 /* Reachability.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86E2EFD11B4EE3C9002D66BB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -88,6 +143,41 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0D51EB401D42134300520C60 /* iOSReachabilityLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D51EB491D42134300520C60 /* Build configuration list for PBXNativeTarget "iOSReachabilityLib" */;
+			buildPhases = (
+				0D51EB3D1D42134300520C60 /* Sources */,
+				0D51EB3E1D42134300520C60 /* Frameworks */,
+				0D51EB3F1D42134300520C60 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOSReachabilityLib;
+			productName = iOSReachabilityLib;
+			productReference = 0D51EB411D42134300520C60 /* libiOSReachabilityLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		0D51EB4E1D42138A00520C60 /* iOSReachability-static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D51EB541D42138A00520C60 /* Build configuration list for PBXNativeTarget "iOSReachability-static" */;
+			buildPhases = (
+				0D51EB4A1D42138A00520C60 /* Sources */,
+				0D51EB4B1D42138A00520C60 /* Frameworks */,
+				0D51EB4C1D42138A00520C60 /* Headers */,
+				0D51EB4D1D42138A00520C60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOSReachability-static";
+			productName = "iOSReachability-static";
+			productReference = 0D51EB4F1D42138A00520C60 /* Reachability.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		86E2EFD31B4EE3C9002D66BB /* iOSReachability */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86E2EFE71B4EE3C9002D66BB /* Build configuration list for PBXNativeTarget "iOSReachability" */;
@@ -132,6 +222,12 @@
 			attributes = {
 				LastUpgradeCheck = 0640;
 				TargetAttributes = {
+					0D51EB401D42134300520C60 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					0D51EB4E1D42138A00520C60 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					86E2EFD31B4EE3C9002D66BB = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -154,11 +250,20 @@
 			targets = (
 				86E2EFD31B4EE3C9002D66BB /* iOSReachability */,
 				86E2EFF11B4EE3DE002D66BB /* MacOSReachability */,
+				0D51EB401D42134300520C60 /* iOSReachabilityLib */,
+				0D51EB4E1D42138A00520C60 /* iOSReachability-static */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0D51EB4D1D42138A00520C60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86E2EFD21B4EE3C9002D66BB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,6 +281,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0D51EB3D1D42134300520C60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D51EB581D4213B200520C60 /* Reachability.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D51EB4A1D42138A00520C60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D51EB571D4213A900520C60 /* Reachability.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86E2EFCF1B4EE3C9002D66BB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -195,6 +316,70 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0D51EB471D42134300520C60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0D51EB481D42134300520C60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		0D51EB551D42138A00520C60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = "iOSReachability-static/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tonymillion.iOSReachability-static";
+				PRODUCT_MODULE_NAME = Reachability;
+				PRODUCT_NAME = Reachability;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0D51EB561D42138A00520C60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "iOSReachability-static/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tonymillion.iOSReachability-static";
+				PRODUCT_MODULE_NAME = Reachability;
+				PRODUCT_NAME = Reachability;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		86E2EFC71B4EE3A2002D66BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -375,6 +560,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0D51EB491D42134300520C60 /* Build configuration list for PBXNativeTarget "iOSReachabilityLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D51EB471D42134300520C60 /* Debug */,
+				0D51EB481D42134300520C60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0D51EB541D42138A00520C60 /* Build configuration list for PBXNativeTarget "iOSReachability-static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D51EB551D42138A00520C60 /* Debug */,
+				0D51EB561D42138A00520C60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		86E2EFAD1B4EE3A2002D66BB /* Build configuration list for PBXProject "Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
