@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = 'https://github.com/tonymillion/Reachability'
   s.authors      = { 'Tony Million' => 'tonymillion@gmail.com' }
-  s.social_media_url   = "http://twitter.com/tonymillion"
+  s.social_media_url   = "https://x.com/tonymillion"
 
   s.license      = { :type => 'BSD', :text => license }
 
@@ -29,6 +29,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.swift_version = "4.1"
   s.ios.deployment_target = "11.0"
-  s.osx.deployment_target = "10.8"
+  s.osx.deployment_target = "10.13"
   s.tvos.deployment_target = "9.0"
 end
