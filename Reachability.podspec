@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => 'https://github.com/tonymillion/Reachability.git', :tag => "v#{s.version}" }
   s.source_files = 'Reachability.{h,m}'
+  s.resource_bundles = {"Reachability_Privacy" => ["Framework/PrivacyInfo.xcprivacy"]}
   s.framework    = 'SystemConfiguration'
 
   s.requires_arc = true
