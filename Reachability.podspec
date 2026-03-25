@@ -1,5 +1,5 @@
 license = <<-EOF
-Copyright (c) 2011, Tony Million.
+Copyright (c) 2011-2026, Tony Million.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -13,7 +13,7 @@ EOF
 
 Pod::Spec.new do |s|
   s.name         = 'Reachability'
-  s.version      = '3.7.6'
+  s.version      = '3.7.7'
   s.summary      = 'ARC and GCD Compatible Reachability Class for iOS and OS X. Drop in replacement for Apple Reachability.'
 
   s.homepage     = 'https://github.com/tonymillion/Reachability'
