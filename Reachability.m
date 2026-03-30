@@ -97,8 +97,9 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     SCNetworkReachabilityRef ref = SCNetworkReachabilityCreateWithName(NULL, [hostname UTF8String]);
     if (ref) 
     {
-        id reachability = [[self alloc] initWithReachabilityRef:ref];
-
+        id reachability = [[self alloc] initWithReachabilityRef:CFBridgingRetain((__bridge id)ref)];
+	CFRelease(ref);
+	
         return reachability;
     }
     
@@ -110,7 +111,8 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
     SCNetworkReachabilityRef ref = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr*)hostAddress);
     if (ref) 
     {
-        id reachability = [[self alloc] initWithReachabilityRef:ref];
+        id reachability = [[self alloc] initWithReachabilityRef:CFBridgingRetain((__bridge id)ref)];
+        CFRelease(ref);
         
         return reachability;
     }
