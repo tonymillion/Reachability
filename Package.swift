@@ -17,6 +17,7 @@ let package = Package(
     dependencies: [],
     targets: [
         .target(
-            name: "Reachability"),
+            name: "Reachability",
+            resources: [.copy("PrivacyInfo.xcprivacy")]),
     ]
 )
